@@ -1,0 +1,123 @@
+package package1;
+
+import java.util.Scanner;
+
+public class MainCurrConverter {
+	
+	static String type;
+	static String newType;
+	static double amount;
+	static double newAmount;
+	
+	public static void main(String[] args) {
+		
+		Scanner moneyInput = new Scanner(System.in);
+		System.out.println("----------------------------");
+		System.out.println("What currency are you converting FROM? Type 'USD', 'YEN', 'EGP', 'LIRA', or 'INR'.");
+		System.out.println("----------------------------");
+		
+		type = moneyInput.nextLine();
+		verifyType(type);
+		
+		System.out.println("----------------------------");
+		System.out.println("What currency are you converting TO? Type 'USD', 'YEN', 'EGP', 'LIRA', or 'INR'.");
+		System.out.println("----------------------------");
+		
+		newType = moneyInput.nextLine();
+		verifyType(newType);
+		
+		System.out.println("----------------------------");
+		System.out.println("Nominal amount in " + type + ":");
+		System.out.println("----------------------------");
+		
+		amount = moneyInput.nextDouble();
+		newAmount = amount;
+		converter(type, newType);
+		
+		System.out.println("----------------------------");
+		System.out.println("Nominal amount in " + newType + "= " + newAmount);
+		System.out.println("----------------------------");
+		moneyInput.close();
+		
+		
+	}
+	
+	
+	static void verifyType(String s) {
+		if (s.contentEquals("USD") || s.contentEquals("YEN") || s.contentEquals("EGP") || s.contentEquals("LIRA") || s.contentEquals("INR")) {
+			s = s;
+		} 
+		else {
+			System.out.println("You must enter a valid currency option. Run program again to restart.");
+			System.exit(0);
+		}
+	}
+	
+	static void converter(String a, String b) {
+		if ((a.contentEquals("USD") && b.contentEquals("YEN"))) {
+			newAmount = amount*107.89;
+		}
+		else if ((b.contentEquals("USD") && a.contentEquals("YEN"))) {
+			newAmount = amount/107.89;
+		}
+		else if ((a.contentEquals("USD") && b.contentEquals("EGP"))) {
+			newAmount = amount*16.7;
+		}
+		else if ((b.contentEquals("USD") && a.contentEquals("EGP"))) {
+			newAmount = amount/16.7;
+		}
+		else if ((a.contentEquals("USD") && b.contentEquals("LIRA"))) {
+			newAmount = amount*5.79;
+		}
+		else if ((b.contentEquals("USD") && a.contentEquals("LIRA"))) {
+			newAmount = amount/5.79;
+		}
+		else if ((a.contentEquals("USD") && b.contentEquals("INR"))) {
+			newAmount = amount*68.95;
+		}
+		else if ((b.contentEquals("USD") && a.contentEquals("INR"))) {
+			newAmount = amount/68.95;
+		}
+		//-------------------------------------------------
+		else if ((a.contentEquals("YEN") && b.contentEquals("EGP"))) {
+			newAmount = amount*.15;
+		}
+		else if ((b.contentEquals("YEN") && a.contentEquals("EGP"))) {
+			newAmount = amount/.15;
+		}
+		else if ((a.contentEquals("YEN") && b.contentEquals("LIRA"))) {
+			newAmount = amount*.054;
+		}
+		else if ((b.contentEquals("YEN") && a.contentEquals("LIRA"))) {
+			newAmount = amount/.054;
+		}
+		else if ((a.contentEquals("YEN") && b.contentEquals("INR"))) {
+			newAmount = amount*.64;
+		}
+		else if ((b.contentEquals("YEN") && a.contentEquals("INR"))) {
+			newAmount = amount/.64;
+		}
+		//-------------------------------------------------
+		else if ((a.contentEquals("EGP") && b.contentEquals("LIRA"))) {
+			newAmount = amount*.35;
+		}
+		else if ((b.contentEquals("EGP") && a.contentEquals("LIRA"))) {
+			newAmount = amount/.35;
+		}
+		else if ((a.contentEquals("EGP") && b.contentEquals("INR"))) {
+			newAmount = amount*4.13;
+		}
+		else if ((b.contentEquals("EGP") && a.contentEquals("INR"))) {
+			newAmount = amount/4.13;
+		}
+		//--------------------------------------------------
+		else if ((a.contentEquals("LIRA") && b.contentEquals("INR"))) {
+			newAmount = amount*11.91;
+		}
+		else if ((b.contentEquals("LIRA") && a.contentEquals("INR"))) {
+			newAmount = amount/11.91;
+		}
+	}
+}
+
+
